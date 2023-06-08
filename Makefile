@@ -6,7 +6,7 @@
 #    By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 17:46:32 by jdaly             #+#    #+#              #
-#    Updated: 2023/06/08 17:50:40 by jdaly            ###   ########.fr        #
+#    Updated: 2023/06/08 22:16:47 by jdaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g
 
 
-SRC = 
+SRC = main.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -28,7 +28,7 @@ LIBFT	:= $(LIBFT_DIR)/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Llibft -llibft -o $@
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -Llibft -lft -o $@
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
