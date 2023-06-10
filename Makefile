@@ -6,7 +6,7 @@
 #    By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 17:46:32 by jdaly             #+#    #+#              #
-#    Updated: 2023/06/08 22:16:47 by jdaly            ###   ########.fr        #
+#    Updated: 2023/06/10 13:50:27 by jdaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(OBJ)
 
 re: fclean all
 
