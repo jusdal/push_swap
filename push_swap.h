@@ -6,9 +6,15 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/10 15:33:15 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/10 17:49:26 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft/libft.h"
+#include <limits.h> //for INT_MIN INT_MAX
+#include <stdio.h> //remove
+#include <string.h>
+#include <stdbool.h>
 
 typedef	struct	s_stack_node
 {
@@ -22,3 +28,8 @@ typedef	struct	s_stack_node
     struct s_stack_node	*next;
     struct s_stack_node	*prev;
 }	t_stack_node;
+
+/* 0_errors.c */
+void    error(char *message);
+void	free_array(char **array);
+void	free_error(char *message, char **array);
