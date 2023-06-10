@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/08 18:08:22 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/08 23:37:34 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 
 
-int	main()
+int	main(int ac, char *av[])
 {
-	ft_putstr_fd("HELLO WORLD\n", 1);
+	if (ac == 1 || !av[1][0])
+		return (0);
+	else
+		ft_putstr_fd("HELLO WORLD\n", 1);
 }
