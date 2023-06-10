@@ -6,22 +6,44 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/10 15:45:13 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/10 18:12:44 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <limits.h> //for INT_MIN INT_MAX
-#include <stdio.h> //remove
-#include <string.h>
-#include <stdbool.h>
 
-bool		stack_sorted(t_stack_node *stack)
+void    put_array(char **array)
+{
+    int i = 0;
+	while (array[i])
+	{
+		printf("array[%d] = %s\n", i, array[i]);
+		i++;
+	}
+}
+
+/*bool		stack_sorted(t_stack_node *stack)
 {
 		//write function to see if stack is already sorted
 }
+*/
+char    **create_arg_array(char *argv[])
+{
+    char *str;
+    char **array;
 
+    str = ft_strdup("");
+		while(av[i])
+		{
+			if (av[i][0] == '\0')
+				error("Error\n");
+			else
+				str = ft_strjoinspace(str, av[i]);
+			i++;	
+		}
+		check_digit(str);
+		array = ft_split(str, ' ');
+}
 void	check_digit(char *str)
 {
 	int i;
@@ -37,7 +59,7 @@ void	check_digit(char *str)
 		i++;
 	}
 }
-
+/*
 long	atol(char *num)
 {
 	//write function to turn str into long number
@@ -83,33 +105,19 @@ stack_init(t_stack_node *a, char **array)
 	
 
 	//maybe a flag?
-}
+} */
 
 int	main(int ac, char *av[])
 {
 	int i;
-	char *str;
 	char **array;
 
 	i = 1;
-	if (ac == 1 || !av[1][0])
+	if (ac == 1)
 		return (0);
 	else
 	{
-		str = ft_strdup("");
-		while(av[i])
-		{
-			str = ft_strjoinspace(str, av[i]);
-			i++;
-		}
-		check_digit(str);
-		array = ft_split(str, ' ');
-		// printf("str = %s\n", str);
-		// int j = 0;
-		// while (array[j])
-		// {
-		// 	printf("array[%d] = %s\n", j, array[j]);
-		// 	j++;
-		// }
+		array = create_arg_array(av);
+		put_array(array);
 	}
 }
