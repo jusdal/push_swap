@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/10 18:12:44 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/13 00:31:47 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,26 @@ void    put_array(char **array)
 	}
 }
 
-/*bool		stack_sorted(t_stack_node *stack)
+void	check_digit(char *str)
 {
-		//write function to see if stack is already sorted
+	int i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (!((ft_isdigit(str[i])) || str[i] == ' '))
+			error("Only use digits in the arguments");
+		i++;
+	}
 }
-*/
-char    **create_arg_array(char *argv[])
-{
-    char *str;
-    char **array;
 
+char    **create_arg_array(char *av[])
+{
+    char	*str;
+    char	**array;
+    int		i;
+
+	i = 0;
     str = ft_strdup("");
 		while(av[i])
 		{
@@ -44,25 +54,47 @@ char    **create_arg_array(char *argv[])
 		check_digit(str);
 		array = ft_split(str, ' ');
 }
-void	check_digit(char *str)
+
+/*bool		stack_sorted(t_stack_node *stack)
 {
-	int i;
-	
-	i = 0;
-	while (str[i])
-	{
-		if (!((ft_isdigit(str[i])) || str[i] == ' '))
-		{
-			printf("Error\n");
-			exit(EXIT_FAILURE);
-		}
-		i++;
-	}
+		//write function to see if stack is already sorted
+}*/
+
+t_stack_node	*find_last_node(t_stack_node *stack)
+{
+		if (!stack)
+			return (0);
+		while (stack->next)
+			stack = stack->next;
+		return (stack);
 }
-/*
-long	atol(char *num)
+
+long	atol(char *str)
 {
 	//write function to turn str into long number
+
+	long	num;
+	int		minuscounter;
+	int		i;
+
+	i = 0;
+	minuscounter = 1;
+	num = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			num = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + (str[i] - '0');
+		i++;
+	}
+	return (num * minuscounter);
 }
 
 bool		check_dup(t_stack_node *a, int nbr)
@@ -79,13 +111,32 @@ bool		check_dup(t_stack_node *a, int nbr)
 	return false;
 }
 
-void	append_node(t_stack_node *a, int n)
+void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node *node;
-	t_stack_node
+	t_stack_node *last_node;
+
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_stack_node));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->value = n;
+	if (*stack == NULL) //if first node to be added
+	{
+		*stack = node; //set value of stack to this node
+		node->prev = NULL; //set reverse field to NULL (first is last)
+	}
+	else // if not first node to be added
+	{
+		last_node = find_last_node(*stack);
+		last_node->next = node; //add new node to end
+		node->prev = last_node; //set previous last node to prev
+	}
 }
 
-stack_init(t_stack_node *a, char **array)
+void	stack_init(t_stack_node **a, char **array)
 {
 	//create stack from 2d char array
 	//check for: 1)duplicates 2)min and max int number 3)syntax
@@ -97,15 +148,12 @@ stack_init(t_stack_node *a, char **array)
 	{
 		nbr = atol(array[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN) //check number against limits
-			//free error
+			free_ll_error("Number is out of range\n", array, a);
 		if (check_dup(a, nbr)) //check duplicate
-			//free error
+			free_ll_error("There is a duplicated number\n", array, a);
 		append_node(a, (int)nbr);
 	}
-	
-
-	//maybe a flag?
-} */
+}
 
 int	main(int ac, char *av[])
 {
