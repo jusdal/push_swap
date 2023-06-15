@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/10 17:49:26 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/15 22:45:21 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,4 @@ typedef	struct	s_stack_node
 void    error(char *message);
 void	free_array(char **array);
 void	free_error(char *message, char **array);
+void    free_ll_error(char *message, char **array, t_stack_node **stack);
