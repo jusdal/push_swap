@@ -6,11 +6,12 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/13 00:31:47 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/15 23:30:56 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void    put_array(char **array)
 {
@@ -29,7 +30,7 @@ void	check_digit(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!((ft_isdigit(str[i])) || str[i] == ' '))
+		if (!(ft_isdigit(str[i]) || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
 			error("Only use digits in the arguments");
 		i++;
 	}
@@ -41,18 +42,20 @@ char    **create_arg_array(char *av[])
     char	**array;
     int		i;
 
-	i = 0;
+	i = 1;
     str = ft_strdup("");
 		while(av[i])
 		{
 			if (av[i][0] == '\0')
-				error("Error\n");
+				error("There is an empty string\n");
 			else
 				str = ft_strjoinspace(str, av[i]);
-			i++;	
+            i++;
 		}
+        printf("str = %s\n", str);
 		check_digit(str);
 		array = ft_split(str, ' ');
+        return (array);
 }
 
 /*bool		stack_sorted(t_stack_node *stack)
@@ -69,7 +72,7 @@ t_stack_node	*find_last_node(t_stack_node *stack)
 		return (stack);
 }
 
-long	atol(char *str)
+long	ft_atol(char *str)
 {
 	//write function to turn str into long number
 
@@ -97,14 +100,14 @@ long	atol(char *str)
 	return (num * minuscounter);
 }
 
-bool		check_dup(t_stack_node *a, int nbr)
+/*bool		check_dup(t_stack_node **a, int nbr)
 {
 	//write function to check if number is a duplicate
 	if (a == NULL)
 		return (false);
 	while (a)
 	{
-		if (a->value == nbr)
+		if (a.value == nbr)
 			return true;
 		a = a->next;
 	}
@@ -153,7 +156,7 @@ void	stack_init(t_stack_node **a, char **array)
 			free_ll_error("There is a duplicated number\n", array, a);
 		append_node(a, (int)nbr);
 	}
-}
+}*/
 
 int	main(int ac, char *av[])
 {
