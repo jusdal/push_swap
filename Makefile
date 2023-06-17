@@ -6,16 +6,16 @@
 #    By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 17:46:32 by jdaly             #+#    #+#              #
-#    Updated: 2023/06/10 17:49:56 by jdaly            ###   ########.fr        #
+#    Updated: 2023/06/17 21:01:20 by jdaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 
 
-SRC = main.c 0_errors.c
+SRC = main.c 0_errors.c 0_stack_utils.c
 
 OBJ = $(SRC:.c=.o)
 
