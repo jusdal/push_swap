@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/17 21:53:20 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/18 00:09:52 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void	put_ll(t_stack_node *stack)
 	ptr = stack;
 	while (ptr)
 	{
+		ft_putstr_fd("value = ", 1);
 		ft_putnbr_fd(ptr->value, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("index = ", 1);
+		ft_putnbr_fd(ptr->index, 1);
 		ft_putstr_fd("\n", 1);
 		ptr = ptr->next;
 	}
@@ -146,6 +150,7 @@ void	append_node(t_stack_node **stack, int n)
 		return ;
 	node->next = NULL;
 	node->value = n;
+	node->index = 0;
 	if (*stack == NULL) //if first node to be added
 	{
 		*stack = node; //set value of stack to this node
@@ -182,6 +187,34 @@ void	stack_init(t_stack_node **a, char **array)
 	}
 }
 
+void	radix_sort(t_stack_node **a, t_stack_node **b)
+{
+	int	len;
+	int	bit;
+	int i;
+	int	j;
+
+	len = stack_len(*a);
+	bit = 9;
+	i = 0;
+	j = 0;
+
+	while (i < bit)
+	{
+		while (j < len)
+		{
+			if (((*a)->index >> i) & 1)
+				push(a, b);
+			else
+				rotate(a);
+			j++;
+		}
+		while (*b)
+			push(b, a);
+		i++;
+	}
+}
+
 int	main(int ac, char *av[])
 {
 	char			**array;
@@ -194,5 +227,10 @@ int	main(int ac, char *av[])
 	stack_init(&a, array);
 	put_ll(a);
 	stack_sorted(a);
-	free_linkedlist(a);
+	assign_index(a);
+	st_printstack_ab(a, b, "10");
+	radix_sort(&a, &b);
+	st_printstack_ab(a, b, "10");
+
+	//free_linkedlist(a);
 }
