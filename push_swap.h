@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/17 21:56:45 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/18 00:07:51 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@
 typedef struct s_stack_node
 {
 	int						value;
-	int						current_position;
-	int						final_index;
-	struct s_stack_node		*target_node;
+	int						index;
 	struct s_stack_node		*next;
 }	t_stack_node;
 
@@ -37,6 +35,18 @@ void	free_linkedlist(t_stack_node *stack);
 void	free_ll_error(char *message, char **array, t_stack_node *stack);
 
 /* 0_stack_utils.c */
-bool	stack_sorted(t_stack_node *stack);
+int				stack_len(t_stack_node *lst);
+bool			stack_sorted(t_stack_node *stack);
+t_stack_node	*find_last_node(t_stack_node *head);
+int				find_min(t_stack_node *stack);
+void			assign_index(t_stack_node *a);
+
+/* 0_actions.c */
+void	push(t_stack_node **dest, t_stack_node **src);
+void	rotate(t_stack_node **stack);
+
+/* print stacks */
+t_stack_node	*st_printstack(t_stack_node *stack, char *base, int max_value);
+int				st_printstack_ab(t_stack_node *a, t_stack_node *b, char *base);
 
 #endif
