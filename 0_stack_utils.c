@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0_actions.c                                        :+:      :+:    :+:   */
+/*   0_stack_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 00:01:05 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/17 21:20:21 by jdaly            ###   ########.fr       */
+/*   Created: 2023/06/17 21:15:02 by jdaly             #+#    #+#             */
+/*   Updated: 2023/06/17 21:18:49 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//swap
-void	sa(t_stack_node **a, t_stack_node **b)
+/* function to see if stack is already sorted */
+bool	stack_sorted(t_stack_node *stack)
 {
-	t_stack_node	*tmp;
+	t_stack_node	*temp;
+	int				min;
 
-	tmp = *a;
-	a = a->next;
+	temp = stack;
+	min = temp->value;
+	printf("min = %d\n", min);
+	while (temp)
+	{
+		printf("temp->value = %d \\ min = %d\n", temp->value, min);
+		if (temp->value < min)
+		{
+			printf("STACK IS NOT SORTED!\n");
+			return (false);
+		}
+		temp = temp->next;
+	}
+	printf("STACK IS SORTED!\n");
+	return (true);
 }
-/*
-//push
-
-//rotate
-
-//reverse rotate
-*/
