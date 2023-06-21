@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   0_stack_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:15:02 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/17 23:50:40 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/22 04:31:11 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,17 @@ bool	stack_sorted(t_stack_node *stack)
 	int				min;
 
 	temp = stack;
-	min = temp->value;
-	printf("min = %d\n", min);
+	min = INT_MIN;
+	//printf("min = %d\n", min);
 	while (temp)
 	{
-		printf("temp->value = %d \\ min = %d\n", temp->value, min);
+		//printf("temp->value = %d \\ min = %d\n", temp->value, min);
 		if (temp->value < min)
 		{
-			printf("STACK IS NOT SORTED!\n");
+			//printf("STACK IS NOT SORTED!\n");
 			return (false);
 		}
+		min = temp->value;
 		temp = temp->next;
 	}
 	printf("STACK IS SORTED!\n");
@@ -83,7 +84,7 @@ void	assign_index(t_stack_node *a)
 
 		while (a)
 		{
-			//printf("min = %d\n", min);
+			printf("min = %ld\n", min);
 			if (a->value == min)
 			{
 				a->index = i;
