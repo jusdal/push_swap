@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   0_errors.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
+/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 23:42:43 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/17 21:14:26 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/22 04:33:17 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	error(char *message)
 {
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
 	exit(EXIT_FAILURE);
 }
 
