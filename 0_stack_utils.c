@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:15:02 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 04:31:11 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 05:02:47 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	stack_sorted(t_stack_node *stack)
 		min = temp->value;
 		temp = temp->next;
 	}
-	printf("STACK IS SORTED!\n");
+	//printf("STACK IS SORTED!\n");
 	return (true);
 }
 
@@ -76,7 +76,7 @@ void	assign_index(t_stack_node *a)
 
 	i = 1;
 	len = stack_len(a);
-	printf("len = %d\n", len);
+	//printf("len = %d\n", len);
 	temp = a;
 	min = find_next_min(a, LONG_MIN);
 	while (i <= len)
@@ -84,12 +84,12 @@ void	assign_index(t_stack_node *a)
 
 		while (a)
 		{
-			printf("min = %ld\n", min);
+			//printf("min = %ld\n", min);
 			if (a->value == min)
 			{
 				a->index = i;
 				min = find_next_min(temp, min);
-				printf("index of value %d is %d\n", a->value, a->index);
+				//printf("index of value %d is %d\n", a->value, a->index);
 				break ;
 			}
 			a = a->next;
