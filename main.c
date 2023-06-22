@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 22:52:44 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 23:29:52 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**create_arg_array(int ac, char *av[])
 	char	**array;
 	int		i;
 
-	 if (ac == 1)
+	 if (ac == 1 || (ac == 2 && av[1][0] == '\0'))
 	 	exit(EXIT_SUCCESS);
 	i = 1;
 	str = ft_strdup("");
@@ -268,21 +268,23 @@ int	main(int ac, char *av[])
 	a = NULL;
 	b = NULL;
 	array = create_arg_array(ac, av);
-	stack_init(&a, array);
-	//printf("ftol(big number) = %lu\n", ft_atol("-99999999999999999999999999999999999999999999999999999999999", array, a));
-	//printf("INT_MAX = %d\n", INT_MAX);
-	//put_ll(a);
-	if (stack_sorted(a))
-		return (0);
-	else if (stack_len(a) <= 5)
-		sort_small(&a, &b, stack_len(a));
-	else
-		radix_sort(&a, &b);
-	//assign_index(a);
-	//put_ll(a);
-	free_linkedlist(a);
-	free_linkedlist(b);
-	//printf("----------------\n");
-	//put_ll(a);
-	//free_linkedlist(a);
+	if (ac >= 2)
+	{
+		stack_init(&a, array);
+		//put_ll(a);
+		if (stack_sorted(a) || stack_len(a) == 1)
+		{
+			free_linkedlist(a);
+			exit(EXIT_SUCCESS);
+		}
+		else if (stack_len(a) <= 5)
+			sort_small(&a, &b, stack_len(a));
+		else
+			radix_sort(&a, &b);
+		free_linkedlist(a);
+		free_linkedlist(b);
+		//printf("----------------\n");
+		//put_ll(a);
+		//free_linkedlist(a);
+	}
 }
