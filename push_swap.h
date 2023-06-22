@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/21 19:43:28 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 16:44:14 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ typedef struct s_stack_node
 }	t_stack_node;
 
 /* 0_errors.c */
-void	error(char *message);
+void	error(void);
 void	free_array(char **array);
-void	free_error(char *message, char **array);
+void	free_error(char **array);
 void	free_linkedlist(t_stack_node *stack);
-void	free_ll_error(char *message, char **array, t_stack_node *stack);
+void	free_ll_error(char **array, t_stack_node *stack);
 
 /* 0_stack_utils.c */
 int				stack_len(t_stack_node *lst);
@@ -48,6 +48,21 @@ void			push(t_stack_node **dest, t_stack_node **src);
 void			rotate(t_stack_node **stack);
 t_stack_node	*find_second_last_node(t_stack_node *stack);
 void			reverse_rotate(t_stack_node **a);
+
+/* 0_actions.c */
+void	sa(t_stack_node **a);
+void	sb(t_stack_node **b);
+void	ra(t_stack_node **a);
+void	pa(t_stack_node **a, t_stack_node **b);
+void	pb(t_stack_node **a, t_stack_node **b);
+
+
+/* 1_sort_small.c */
+void	sort_three(t_stack_node **a, int t, int m, int b);
+void	sort_four(t_stack_node **a, t_stack_node **b);
+void	rotate_to_min(t_stack_node **a);
+void	sort_five(t_stack_node **a, t_stack_node **b);
+void	sort_small(t_stack_node **a, t_stack_node **b, int len);
 
 // /* print stacks */
 // t_stack_node	*st_printstack(t_stack_node *stack, char *base, int max_value);
