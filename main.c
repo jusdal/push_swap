@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 17:38:31 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 22:52:44 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,21 @@ void	put_ll(t_stack_node *stack)
 void	check_digit(char *str)
 {
 	int	i;
+	int	digits;
 
 	i = 0;
+	digits = 0;
 	while (str[i])
 	{
+		if (ft_isdigit(str[i]))
+			digits++;
 		if (!(ft_isdigit(str[i]) || str[i] == ' ' || str[i] == '-'
 				|| str[i] == '+'))
 			error();
 		i++;
 	}
+	if (digits > 10 || digits == 0)
+		error();
 }
 
 char	**create_arg_array(int ac, char *av[])
@@ -73,20 +79,22 @@ char	**create_arg_array(int ac, char *av[])
 	char	**array;
 	int		i;
 
-	if (ac == 1)
-		exit(EXIT_SUCCESS);
+	 if (ac == 1)
+	 	exit(EXIT_SUCCESS);
 	i = 1;
 	str = ft_strdup("");
 	while (av[i])
 	{
 		if (av[i][0] == '\0')
+		{
+			free(str);
 			error();
+		}
 		else
 			str = ft_strjoinspace(str, av[i]);
 		i++;
 	}
 	//printf("str = %s\n", str);
-	check_digit(str);
 	array = ft_split(str, ' ');
 	free(str);
 	return (array);
@@ -105,13 +113,15 @@ t_stack_node	*find_last_node(t_stack_node *stack)
 }
 
 /* function to turn str into long to compare to int min/max */
-long	ft_atol(char *str)
+long	ft_atol(char *str, char **array, t_stack_node *a)
 {
 	long	num;
 	int		minuscounter;
 	int		i;
+	//int		j;
 
 	i = 0;
+	//j = 0;
 	minuscounter = 1;
 	num = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
@@ -120,14 +130,17 @@ long	ft_atol(char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			num = -1;
+			minuscounter = -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		num = num * 10 + (str[i] - '0');
 		i++;
+		//j++;
 	}
+	if (str[i] != '\0' && !(str[i] >= '0' && str[i] <= '9'))
+		free_ll_error(array, a);
 	return (num * minuscounter);
 }
 
@@ -185,7 +198,8 @@ void	stack_init(t_stack_node **a, char **array)
 	//put_array(array);
 	while (array[i])
 	{
-		nbr = atol(array[i]);
+		check_digit(array[i]);
+		nbr = ft_atol(array[i], array, *a);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			free_ll_error(array, *a);
 		if (check_dup(*a, nbr))
@@ -255,6 +269,8 @@ int	main(int ac, char *av[])
 	b = NULL;
 	array = create_arg_array(ac, av);
 	stack_init(&a, array);
+	//printf("ftol(big number) = %lu\n", ft_atol("-99999999999999999999999999999999999999999999999999999999999", array, a));
+	//printf("INT_MAX = %d\n", INT_MAX);
 	//put_ll(a);
 	if (stack_sorted(a))
 		return (0);
