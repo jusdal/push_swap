@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 00:02:48 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 00:13:19 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,24 @@ int	main(int ac, char *av[])
 	a = NULL;
 	b = NULL;
 	array = create_arg_array(ac, av);
-	stack_init(&a, array);
-		//put_ll(a);
-	if (stack_sorted(a) || stack_len(a) == 1)
+	if (ac >= 2)
 	{
+		stack_init(&a, array);
+		//put_ll(a);
+		if (stack_sorted(a) || stack_len(a) == 1)
+		{
+			free_linkedlist(a);
+			exit(EXIT_SUCCESS);
+		}
+		else if (stack_len(a) <= 5)
+			sort_small(&a, &b, stack_len(a));
+		else
+			radix_sort(&a, &b);
 		free_linkedlist(a);
-		exit(EXIT_SUCCESS);
+		free_linkedlist(b);
+		//printf("----------------\n");
+		//put_ll(a);
+		//free_linkedlist(a);
 	}
-	else if (stack_len(a) <= 5)
-		sort_small(&a, &b, stack_len(a));
-	else
-		radix_sort(&a, &b);
-	free_linkedlist(a);
-	free_linkedlist(b);
-	//printf("----------------\n");
-	//put_ll(a);
-	//free_linkedlist(a);
 	return (0);
 }
