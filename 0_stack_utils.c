@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:15:02 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 05:02:47 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 23:59:33 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ int	stack_len(t_stack_node *lst)
 		cur = cur->next;
 	}
 	return (i);
+}
+
+t_stack_node	*find_last_node(t_stack_node *stack)
+{
+	t_stack_node	*cur;
+
+	cur = stack;
+	if (!cur)
+		return (0);
+	while (cur->next)
+		cur = cur->next;
+	return (cur);
 }
 
 /* function to see if stack is already sorted */
