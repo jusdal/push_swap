@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 04:19:14 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 17:38:31 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	check_digit(char *str)
 	{
 		if (!(ft_isdigit(str[i]) || str[i] == ' ' || str[i] == '-'
 				|| str[i] == '+'))
-			error("Only use digits in the arguments");
+			error();
 		i++;
 	}
 }
@@ -80,7 +80,7 @@ char	**create_arg_array(int ac, char *av[])
 	while (av[i])
 	{
 		if (av[i][0] == '\0')
-			error("There is an empty string\n");
+			error();
 		else
 			str = ft_strjoinspace(str, av[i]);
 		i++;
@@ -182,18 +182,19 @@ void	stack_init(t_stack_node **a, char **array)
 	long	nbr;
 
 	i = 0;
-	put_array(array);
+	//put_array(array);
 	while (array[i])
 	{
 		nbr = atol(array[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			free_ll_error("Number is out of range\n", array, *a);
+			free_ll_error(array, *a);
 		if (check_dup(*a, nbr))
-			free_ll_error("There is a duplicated number\n", array, *a);
+			free_ll_error(array, *a);
 		append_node(a, (int)nbr, i + 1);
 		i++;
 	}
 	assign_index(*a);
+	free_array(array);
 }
 
 int count_bits(int number)
@@ -244,53 +245,6 @@ void	radix_sort(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-void	sort_three(t_stack_node *a)
-//write a function to sort three integers using swap, push, rotate
-{
-	int	t;
-	int m;
-	int	b;
-
-	t = a->value;
-	m = a->next->value;
-	b = a->next->next->value;
-	
-	if (t > m && m < b && b > t) // 2, 1, 3
-	{
-		swap(&a);
-		ft_putstr_fd("sa\n", 1);
-	}
-	else if (t > m && m > b && b < t) // 3, 2, 1
-	{
-		swap(&a);
-		ft_putstr_fd("sa\n", 1);
-		reverse_rotate(&a);
-		ft_putstr_fd("rra\n", 1);
-	}
-	else if (t < m && m > b && b < t) // 2, 3, 1
-	{
-		reverse_rotate(&a);
-		ft_putstr_fd("rra\n", 1);
-	}
-	else if (t < m && m > b && b > t) // 1, 3, 2
-	{
-		swap(&a);
-		ft_putstr_fd("sa\n", 1);
-		rotate(&a);
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if (t < m && m > b && b < t) // 2, 3, 1
-	{
-		rotate(&a);
-		ft_putstr_fd("ra\n", 1);
-	}
-	else if(t > m && m < b && b < t) // 3, 1, 2
-	{
-		rotate(&a);
-		ft_putstr_fd("ra\n", 1);
-	}
-}
-
 int	main(int ac, char *av[])
 {
 	char			**array;
@@ -301,24 +255,18 @@ int	main(int ac, char *av[])
 	b = NULL;
 	array = create_arg_array(ac, av);
 	stack_init(&a, array);
-	put_ll(a);
+	//put_ll(a);
 	if (stack_sorted(a))
 		return (0);
-	if (stack_len(a) == 3)
-		sort_three(a);
-	// if (stack_len(a) == 5)
-	// 	sort_five(a, b);
+	else if (stack_len(a) <= 5)
+		sort_small(&a, &b, stack_len(a));
 	else
 		radix_sort(&a, &b);
 	//assign_index(a);
-	//st_printstack_ab(a, b, "10");
 	//put_ll(a);
 	free_linkedlist(a);
 	free_linkedlist(b);
 	//printf("----------------\n");
-
 	//put_ll(a);
-	//st_printstack_ab(a, b, "10");
-
 	//free_linkedlist(a);
 }
