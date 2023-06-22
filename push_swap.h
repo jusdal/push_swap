@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 16:44:14 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 18:01:30 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,5 @@ void	sort_four(t_stack_node **a, t_stack_node **b);
 void	rotate_to_min(t_stack_node **a);
 void	sort_five(t_stack_node **a, t_stack_node **b);
 void	sort_small(t_stack_node **a, t_stack_node **b, int len);
-
-// /* print stacks */
-// t_stack_node	*st_printstack(t_stack_node *stack, char *base, int max_value);
-// int				st_printstack_ab(t_stack_node *a, t_stack_node *b, char *base);
 
 #endif
