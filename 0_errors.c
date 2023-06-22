@@ -6,7 +6,7 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 23:42:43 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 16:43:31 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 00:19:37 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ void	free_array(char **array)
 	free(array);
 }
 
+void	free_error(char **array)
+{
+	free_array(array);
+	error();
+}
+
 void	free_linkedlist(t_stack_node *stack)
 {
 	t_stack_node		*tmp;
@@ -47,12 +53,6 @@ void	free_linkedlist(t_stack_node *stack)
 		current = tmp;
 	}
 	stack = NULL;
-}
-
-void	free_error(char **array)
-{
-	free_array(array);
-	error();
 }
 
 void	free_ll_error(char **array, t_stack_node *stack)
