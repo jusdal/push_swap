@@ -6,16 +6,16 @@
 /*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 23:42:43 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/22 04:33:17 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/22 16:43:31 by justindaly       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(char *message)
+void	error(void)
 {
 	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(message, 2);
+	//ft_putstr_fd(message, 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -49,15 +49,15 @@ void	free_linkedlist(t_stack_node *stack)
 	stack = NULL;
 }
 
-void	free_error(char *message, char **array)
+void	free_error(char **array)
 {
 	free_array(array);
-	error(message);
+	error();
 }
 
-void	free_ll_error(char *message, char **array, t_stack_node *stack)
+void	free_ll_error(char **array, t_stack_node *stack)
 {
 	free_array(array);
 	free_linkedlist(stack);
-	error(message);
+	error();
 }
