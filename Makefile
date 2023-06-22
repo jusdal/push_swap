@@ -6,7 +6,7 @@
 #    By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 17:46:32 by jdaly             #+#    #+#              #
-#    Updated: 2023/06/22 20:11:14 by justindaly       ###   ########.fr        #
+#    Updated: 2023/06/23 00:26:41 by justindaly       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g
 
 
-SRC = main.c 0_errors.c 0_stack_utils.c 0_actions.c 0_actions2.c 1_sort_small.c
+SRC = 0_actions1.c 0_actions2.c 0_errors.c 0_stack_utils.c 1_parse.c \
+	2_sort_small.c 3_sort_large.c main.c
 
 OBJ = $(SRC:.c=.o)
 
