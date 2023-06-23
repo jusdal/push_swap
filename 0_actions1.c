@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   0_actions.c                                        :+:      :+:    :+:   */
+/*   0_actions1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 00:01:05 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/21 19:58:19 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 16:59:49 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//swap
 void	swap(t_stack_node **a)
 {
 	t_stack_node	*tmp;
@@ -25,7 +24,6 @@ void	swap(t_stack_node **a)
 	(*a)->next = tmp;
 }
 
-//push
 void	push(t_stack_node **dest, t_stack_node **src)
 {
 	t_stack_node	*node_to_push;
@@ -46,7 +44,6 @@ void	push(t_stack_node **dest, t_stack_node **src)
 	}
 }
 
-//rotate
 void	rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
@@ -61,7 +58,6 @@ void	rotate(t_stack_node **stack)
 	last_node->next->next = NULL;
 }	
 
-//reverse rotate
 t_stack_node	*find_second_last_node(t_stack_node *stack)
 {
 	t_stack_node	*temp;
@@ -69,7 +65,6 @@ t_stack_node	*find_second_last_node(t_stack_node *stack)
 	temp = stack;
 	while (temp->next->next)
 		temp = temp->next;
-	//printf("second to last = %d\n", temp->value);
 	return (temp);
 }
 
