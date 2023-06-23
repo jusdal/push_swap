@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   0_actions2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:29:34 by justindaly        #+#    #+#             */
-/*   Updated: 2023/06/22 15:27:19 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 17:00:21 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ void	ra(t_stack_node **a)
 	rotate(a);
 	ft_putstr_fd("ra\n", 1);
 }
-
-// void	rb(t_stack_node **b)
-// {
-// 	rotate(b);
-// 	ft_putstr_fd("rb\n", 1);
-// }
 
 void	pa(t_stack_node **a, t_stack_node **b)
 {
