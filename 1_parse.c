@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   1_parse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 23:55:24 by justindaly        #+#    #+#             */
-/*   Updated: 2023/06/23 00:01:18 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 18:12:58 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_digit(char *str)
 			error();
 		i++;
 	}
-	if (digits > 10 || digits == 0)
+	if (digits == 0)
 		error();
 }
 
@@ -38,10 +38,8 @@ long	ft_atol(char *str, char **array, t_stack_node *a)
 	long	num;
 	int		minuscounter;
 	int		i;
-	//int		j;
 
 	i = 0;
-	//j = 0;
 	minuscounter = 1;
 	num = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
@@ -57,7 +55,6 @@ long	ft_atol(char *str, char **array, t_stack_node *a)
 	{
 		num = num * 10 + (str[i] - '0');
 		i++;
-		//j++;
 	}
 	if (str[i] != '\0' && !(str[i] >= '0' && str[i] <= '9'))
 		free_ll_error(array, a);
@@ -92,30 +89,22 @@ void	append_node(t_stack_node **stack, int n, int pos)
 	node->value = n;
 	node->pos = pos;
 	node->index = 0;
-	if (*stack == NULL) //if first node to be added
-	{
-		*stack = node; //set value of stack to this node
-		//printf("FIRST NODE ADDED\n");
-		//node->prev = NULL; //set reverse field to NULL (first is last)
-	}
-	else // if not first node to be added
+	if (*stack == NULL)
+		*stack = node;
+	else
 	{
 		last_node = find_last_node(*stack);
-		last_node->next = node; //add new node to end
-		//printf("ANOTHER NODE ADDED\n");
-		//node->prev = last_node; //set previous last node to prev
+		last_node->next = node;
 	}
 }
 
-/* create stack from 2d char array
-check for: 1)min and max int 2)duplicates*/
+/* create stack from 2d char array */
 void	stack_init(t_stack_node **a, char **array)
 {
 	int		i;
 	long	nbr;
 
 	i = 0;
-	//put_array(array);
 	while (array[i])
 	{
 		check_digit(array[i]);

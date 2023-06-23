@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_sort_small.c                                     :+:      :+:    :+:   */
+/*   2_sort_small.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:03:52 by justindaly        #+#    #+#             */
-/*   Updated: 2023/06/22 16:39:21 by justindaly       ###   ########.fr       */
+/*   Updated: 2023/06/23 17:13:26 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	sort_three(t_stack_node **a, int t, int m, int b)
 {
-	if (t > m && m < b && b > t) // 2, 1, 3
+	if (t > m && m < b && b > t)
 		sa(a);
-	else if (t > m && m > b && b < t) // 3, 2, 1
+	else if (t > m && m > b && b < t)
 	{
 		sa(a);
 		reverse_rotate(a);
 		ft_putstr_fd("rra\n", 1);
 	}
-	else if (t < m && m > b && b < t) // 2, 3, 1
+	else if (t < m && m > b && b < t)
 	{
 		reverse_rotate(a);
 		ft_putstr_fd("rra\n", 1);
 	}
-	else if (t < m && m > b && b > t) // 1, 3, 2
+	else if (t < m && m > b && b > t)
 	{
 		sa(a);
 		rotate(a);
 		ft_putstr_fd("ra\n", 1);
 	}
-	else if(t > m && m < b && b < t) // 3, 1, 2
+	else if (t > m && m < b && b < t)
 		ra(a);
 }
 
@@ -85,7 +85,7 @@ void	sort_five(t_stack_node **a, t_stack_node **b)
 	pa(a, b);
 }
 
-void sort_small(t_stack_node **a, t_stack_node **b, int len)
+void	sort_small(t_stack_node **a, t_stack_node **b, int len)
 {
 	if (len == 2)
 		sa(a);
