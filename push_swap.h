@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 17:09:07 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/23 18:27:45 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "libft/libft.h"
 # include <limits.h> //for INT_MIN INT_MAX
-# include <stdio.h> //remove
 # include <stdlib.h>
-# include <string.h>
 # include <stdbool.h>
 
 typedef struct s_stack_node
