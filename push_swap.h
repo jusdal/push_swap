@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 18:27:45 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/23 18:28:31 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <limits.h> //for INT_MIN INT_MAX
+# include <limits.h>
 # include <stdlib.h>
 # include <stdbool.h>
 
