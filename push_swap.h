@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 18:28:31 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/23 18:46:56 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool			stack_sorted(t_stack_node *stack);
 int				find_next_min(t_stack_node *stack, long curr_min);
 void			assign_index(t_stack_node *a);
 
-/* 1_parse.c */
+/* 1_stack_init.c */
 void			check_digit(char *str);
 long			ft_atol(char *str, char **array, t_stack_node *a);
 bool			check_dup(t_stack_node *a, int nbr);

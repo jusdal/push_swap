@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: justindaly <justindaly@student.42.fr>      +#+  +:+       +#+         #
+#    By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/08 17:46:32 by jdaly             #+#    #+#              #
-#    Updated: 2023/06/23 00:26:41 by justindaly       ###   ########.fr        #
+#    Updated: 2023/06/23 18:46:41 by jdaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g
 
 
-SRC = 0_actions1.c 0_actions2.c 0_errors.c 0_stack_utils.c 1_parse.c \
+SRC = 0_actions1.c 0_actions2.c 0_errors.c 0_stack_utils.c 1_stack_init.c \
 	2_sort_small.c 3_sort_large.c main.c
 
 OBJ = $(SRC:.c=.o)
