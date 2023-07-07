@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   1_stack_init.c                                          :+:      :+:    :+:   */
+/*   1_stack_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 23:55:24 by justindaly        #+#    #+#             */
-/*   Updated: 2023/06/23 18:12:58 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/27 22:45:05 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_digit(char *str)
-{
-	int	i;
-	int	digits;
-
-	i = 0;
-	digits = 0;
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]))
-			digits++;
-		if (!(ft_isdigit(str[i]) || str[i] == ' ' || str[i] == '-'
-				|| str[i] == '+'))
-			error();
-		i++;
-	}
-	if (digits == 0)
-		error();
-}
 
 /* function to turn str into long to compare to int min/max */
 long	ft_atol(char *str, char **array, t_stack_node *a)
@@ -75,7 +55,7 @@ bool	check_dup(t_stack_node *a, int nbr)
 	return (false);
 }
 
-void	append_node(t_stack_node **stack, int n, int pos)
+void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
@@ -87,7 +67,6 @@ void	append_node(t_stack_node **stack, int n, int pos)
 		return ;
 	node->next = NULL;
 	node->value = n;
-	node->pos = pos;
 	node->index = 0;
 	if (*stack == NULL)
 		*stack = node;
@@ -107,13 +86,12 @@ void	stack_init(t_stack_node **a, char **array)
 	i = 0;
 	while (array[i])
 	{
-		check_digit(array[i]);
 		nbr = ft_atol(array[i], array, *a);
 		if (nbr > INT_MAX || nbr < INT_MIN)
 			free_ll_error(array, *a);
 		if (check_dup(*a, nbr))
 			free_ll_error(array, *a);
-		append_node(a, (int)nbr, i + 1);
+		append_node(a, (int)nbr);
 		i++;
 	}
 	assign_index(*a);
