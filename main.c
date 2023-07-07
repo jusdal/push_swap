@@ -6,11 +6,32 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:52:50 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 18:22:42 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/27 18:24:39 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+bool	check_digit(char *str)
+{
+	int	i;
+	int	digits;
+
+	i = 0;
+	digits = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			digits++;
+		if (!(ft_isdigit(str[i]) || str[i] == ' ' || str[i] == '-'
+				|| str[i] == '+'))
+			return (false);
+		i++;
+	}
+	if (digits == 0)
+		return (false);
+	return (true);
+}
 
 char	**create_arg_array(int ac, char *av[])
 {
@@ -20,13 +41,11 @@ char	**create_arg_array(int ac, char *av[])
 
 	if (ac == 1)
 		exit(EXIT_SUCCESS);
-	if (ac == 2)
-		check_digit(av[1]);
 	i = 1;
 	str = ft_strdup("");
 	while (av[i])
 	{
-		if (av[i][0] == '\0')
+		if ((check_digit(av[i]) == false) || (av[i][0] == '\0'))
 		{
 			free(str);
 			error();
