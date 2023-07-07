@@ -6,7 +6,7 @@
 /*   By: jdaly <jdaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 15:29:55 by jdaly             #+#    #+#             */
-/*   Updated: 2023/06/23 18:46:56 by jdaly            ###   ########.fr       */
+/*   Updated: 2023/06/27 22:41:23 by jdaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 typedef struct s_stack_node
 {
 	int						value;
-	int						pos;
 	int						index;
 	struct s_stack_node		*next;
 }	t_stack_node;
@@ -55,10 +54,9 @@ int				find_next_min(t_stack_node *stack, long curr_min);
 void			assign_index(t_stack_node *a);
 
 /* 1_stack_init.c */
-void			check_digit(char *str);
 long			ft_atol(char *str, char **array, t_stack_node *a);
 bool			check_dup(t_stack_node *a, int nbr);
-void			append_node(t_stack_node **stack, int n, int pos);
+void			append_node(t_stack_node **stack, int n);
 void			stack_init(t_stack_node **a, char **array);
 
 /* 2_sort_small.c */
