@@ -56,7 +56,7 @@ void	rotate(t_stack_node **stack)
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	last_node->next->next = NULL;
-}	
+}
 
 t_stack_node	*find_second_last_node(t_stack_node *stack)
 {
